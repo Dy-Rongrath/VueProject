@@ -1,7 +1,7 @@
 <template>
     <div class="flex flex-wrap justify-center gap-6 pt-10 pb-12 w-full h-full">
         <div v-for="product in products" :key="product.id"
-            class="border rounded-lg overflow-hidden shadow-lg relative w-[298px] h-[402px] grid gap-6">
+            class="border rounded-lg overflow-hidden shadow-lg relative w-[298px] h-[402px] grid">
             <div v-if="product.discount"
                 class="absolute top-5 bg-[#3BB77E] text-white text-xs font-bold px-3 py-2 rounded-r-xl w-[50px] h-[32px]">
                 -{{ product.discount }}%
@@ -13,7 +13,7 @@
 
             <RouterLink :to="{ name: 'ProductDetail', params: { id: product.id } }">
                 <img :src="product.image" alt="product.name" class="flex items-center w-[200px] h-[150px] ml-12 mt-8">
-                <div class="p-4">
+                <div class="px-4 pt-8">
                     <h3 class="text-xs">{{ product.brand }}</h3>
                     <p class="text-base font-semibold mt-1">{{ product.description }}</p>
                     <div class="flex items-center text-center mt-1">
@@ -26,7 +26,7 @@
                 </div>
             </RouterLink>
 
-            <div class="flex justify-between items-center mt-2">
+            <div class="flex justify-between items-center px-4 pb-4">
                 <div>
                     <span class="text-lg font-bold text-green-600">${{ product.price }}</span>
                     <span v-if="product.oldPrice" class="text-sm text-gray-500 line-through">${{ product.oldPrice
