@@ -2,28 +2,31 @@
 
   <div class="min-h-screen bg-white flex flex-col justify-center items-center">
 
-    <div class="flex items-center justify-between bg-white py-6 px-2 w-full max-w-[1586px] mx-auto">
+    <!-- Header -->
+    <!-- <div class="flex items-center justify-between bg-white py-6 px-2 w-full max-w-[1586px] mx-auto"> -->
 
+      <Header/>
       <!-- Logo -->
-      <img src="../assets/image/Logo.svg" alt="logo">
+      <!-- <img src="../assets/image/Logo.svg" alt="logo"> -->
 
       <!-- SearchBox -->
-      <searchbox></searchbox>
+      <!-- <searchbox></searchbox> -->
 
       <!-- Menu -->
-      <div class="flex space-x-4">
+      <!-- <div class="flex space-x-4">
         <MenuItem menuName="Account" icon="bx-user" />
         <MenuItem menuName="Compare" icon="bx-recycle" />
         <MenuItem menuName="Wishlist" icon="bx-heart" />
         <MenuItem menuName="Cart" icon="bx-cart" />
-      </div>
+      </div> -->
 
-    </div>
+    <!-- </div> -->
 
-    <div class="flex justify-between items-center mb-6 w-full max-w-[1586px] mx-auto border-y-2 py-4">
-
+    <!-- Navigation -->
+    <!-- <div class="flex justify-between items-center mb-6 w-full max-w-[1586px] mx-auto border-y-2 py-4"> -->
+      <Navigation/>
       <!-- Dropdown Category -->
-      <div @click="toggleDropdown" class="relative">
+      <!-- <div @click="toggleDropdown" class="relative">
         <button class="flex items-center bg-[#3BB77E] text-white py-2 px-4 rounded-md">
           <i class='bx bx-grid-alt pr-2'></i>
           {{ selectedCategory }}
@@ -35,10 +38,10 @@
             {{ category.title }}
           </li>
         </ul>
-      </div>
+      </div> -->
 
       <!-- Menu -->
-      <RouterLink to="" class="flex gap-6">
+      <!-- <RouterLink to="" class="flex gap-6">
         <MenuItem menuName="Hot Deals" icon="bxs-hot" icon_color="#3BB77E" font_weight="700" />
         <MenuItem menuName="Home" dropList="none" font_weight="700" />
         <MenuItem menuName="Food" dropList="yes" font_weight="700" />
@@ -47,10 +50,10 @@
         <MenuItem menuName="Cookies" dropList="none" font_weight="700" />
         <MenuItem menuName="Meat & Seafood" dropList="yes" font_weight="700" />
         <MenuItem menuName="Bakery" dropList="none" font_weight="700" />
-      </RouterLink>
+      </RouterLink> -->
 
       <!-- Contact -->
-      <div class="flex items-end space-x-2">
+      <!-- <div class="flex items-end space-x-2">
         <div class="flex items-center text-3xl">
           <i class='bx bx-headphone'></i>
         </div>
@@ -58,8 +61,8 @@
           <div class="text-xl text-green-500 font-extrabold">099 777 888</div>
           <div class="text-xs">24/7 support center</div>
         </div>
-      </div>
-    </div>
+      </div> -->
+    <!-- </div> -->
 
     <!-- Meneu & Categories -->
     <div class="w-full max-w-[1586px] mx-auto">
@@ -85,13 +88,13 @@
 
 <script>
 import ShowCase from '@/components/ShowCase.vue';
-import MenuItem from '@/components/MenuItem.vue';
-import Searchbox from '@/components/Searchbox.vue';
 import Category from '@/components/Category.vue';
 import Promotion from '@/components/Promotion.vue';
 import Menu from '@/components/Menu.vue';
 import Product from '@/components/Product.vue';
-import { ref } from 'vue';
+import Header from '@/components/Header.vue'
+import Navigation from '@/components/Navigation.vue'
+
 
 export default {
   name: "home",
@@ -101,8 +104,8 @@ export default {
     Promotion,
     Product,
     ShowCase,
-    MenuItem,
-    Searchbox,
+    Header,
+    Navigation,
   },
   data() {
     return {
@@ -114,35 +117,5 @@ export default {
       this.activeMenu = menuId;
     }
   },
-
-  setup() {
-    const categories = ref([
-      { id: 1, title: 'All Categories' },
-      { id: 2, title: 'Cake & Milk' },
-      { id: 3, title: 'Peach' },
-      { id: 4, title: 'Organic Kiwi' },
-      { id: 5, title: 'Red Apple' },
-      { id: 6, title: 'Snack' },
-      { id: 7, title: 'Black Plum' },
-      { id: 8, title: 'Vegetables' },
-      { id: 9, title: 'Headphone' },
-      { id: 10, title: 'Cake & Milk' },
-      { id: 11, title: 'Orange' },
-    ]);
-    const selectedCategory = ref('Browse All Categories');
-    const dropdownOpen = ref(false);
-
-    const toggleDropdown = () => {
-      dropdownOpen.value = !dropdownOpen.value;
-    };
-
-    const selectCategory = (category) => {
-      selectedCategory.value = category.title;
-      dropdownOpen.value = false;
-    };
-
-    return { categories, selectedCategory, dropdownOpen, toggleDropdown, selectCategory };
-  }
-
 }
 </script>
