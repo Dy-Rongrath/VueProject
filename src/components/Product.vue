@@ -42,6 +42,7 @@
             </div>
         </div>
 
+        <!-- Snackbar -->
         <Snackbar :show="snackbar.show" :message="snackbar.message" :type="snackbar.type" />
 
     </div>
@@ -90,19 +91,6 @@ export default {
         formatRating(rating) {
             return (rating || 0).toFixed(1); // Safely handle undefined or non-numeric ratings
         },
-
-        // addToCart(product) {
-        //     const existingProductIndex = this.cart.findIndex(item => item.id === product.id);
-
-        //     if (existingProductIndex !== -1) {
-        //         this.cart[existingProductIndex].quantity += product.quantity;
-        //     } else {
-        //         this.cart.push({ ...product });
-        //     }
-
-        //     this.showSnackbar(`${product.quantity} ${product.brand} have been added to the cart!`);
-        //     console.log(this.cart)
-        // },
         addToCart(product) {
             if (product.quantity > 0) {
                 const existingProductIndex = this.cart.findIndex(item => item.id === product.id);
