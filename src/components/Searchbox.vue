@@ -1,5 +1,5 @@
 <template>
-    <div class="flex items-center justify-between bg-white border-2 border-[#BCE3C9] rounded-lg">
+    <div class="flex items-center justify-between bg-white border-2 border-[#BCE3C9] rounded-lg w-2/4">
         <!-- Category Dropdown -->
         <div class="relative">
             <button @click="toggleDropdown" class="px-4 py-2 rounded-l-lg text-gray-700">
