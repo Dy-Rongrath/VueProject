@@ -38,7 +38,8 @@ export default {
                 { id: 7, title: 'Vegetables' },
                 { id: 8, title: 'Headphone' },
                 { id: 9, title: 'Cake & Milk' },
-                { id: 10, title: 'Orange' }
+                { id: 10, title: 'Orange' },
+                { id: 10, title: 'All Categories' }
             ],
             selectedCategory: {}
         }

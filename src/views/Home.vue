@@ -23,12 +23,16 @@
     <div class="flex justify-between items-center mb-6 w-full max-w-[1586px] mx-auto border-y-2 py-4">
 
       <!-- Dropdown Category -->
-      <div class="flex items-center space-x-3">
-        <ul class="flex items-center space-x-3 list-none">
-          <li class="flex justify-center items-center text-center space-x-1 bg-green-500 w-64 h-11 rounded-md px-4">
-            <i class='bx bx-grid-alt text-xl'></i>
-            <span>Browse all categories</span>
-            <i class='bx bx-chevron-down text-xl'></i>
+      <div @click="toggleDropdown" class="relative">
+        <button class="flex items-center bg-[#3BB77E] text-white py-2 px-4 rounded-md">
+          <i class='bx bx-grid-alt pr-2'></i>
+          {{ selectedCategory }}
+          <i class='bx bx-chevron-down pl-2'></i>
+        </button>
+        <ul v-if="dropdownOpen" class="absolute z-10 bg-white shadow-lg w-48 mt-1">
+          <li v-for="category in categories" :key="category.id" class="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+            @click="selectCategory(category)">
+            {{ category.title }}
           </li>
         </ul>
       </div>
@@ -87,6 +91,7 @@ import Category from '@/components/Category.vue';
 import Promotion from '@/components/Promotion.vue';
 import Menu from '@/components/Menu.vue';
 import Product from '@/components/Product.vue';
+import { ref } from 'vue';
 
 export default {
   name: "home",
@@ -108,6 +113,36 @@ export default {
     handleMenuSelection(menuId) {
       this.activeMenu = menuId;
     }
+  },
+
+  setup() {
+    const categories = ref([
+      { id: 1, title: 'All Categories' },
+      { id: 2, title: 'Cake & Milk' },
+      { id: 3, title: 'Peach' },
+      { id: 4, title: 'Organic Kiwi' },
+      { id: 5, title: 'Red Apple' },
+      { id: 6, title: 'Snack' },
+      { id: 7, title: 'Black Plum' },
+      { id: 8, title: 'Vegetables' },
+      { id: 9, title: 'Headphone' },
+      { id: 10, title: 'Cake & Milk' },
+      { id: 11, title: 'Orange' },
+    ]);
+    const selectedCategory = ref('Browse All Categories');
+    const dropdownOpen = ref(false);
+
+    const toggleDropdown = () => {
+      dropdownOpen.value = !dropdownOpen.value;
+    };
+
+    const selectCategory = (category) => {
+      selectedCategory.value = category.title;
+      dropdownOpen.value = false;
+    };
+
+    return { categories, selectedCategory, dropdownOpen, toggleDropdown, selectCategory };
   }
+
 }
 </script>
