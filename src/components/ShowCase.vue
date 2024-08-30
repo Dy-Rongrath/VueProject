@@ -1,6 +1,6 @@
 <template>
     <div class="flex justify-between items-center bg-cover bg-center bg-[#F0E8D5] rounded-[20px]"
-        style="background-image: url('@/assets/image/showcase/3389452 1.png');">
+        style="background-image: url('src/assets/image/showcase/3389452 1.png');">
         <div class="p-5 flex flex-col gap-2 ml-16">
             <h1 class="text-5xl font-bold text-[#253D4E]">Don't miss amazing grocery deals</h1>
             <h3 class="text-2xl font-light text-[#7E7E7E]">Sign up for the daily newsletter</h3>

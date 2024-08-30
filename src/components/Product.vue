@@ -10,50 +10,55 @@
                 :class="['absolute top-5 text-white text-xs font-bold px-3 py-2 rounded-r-xl w-[50px] h-[32px]', getTagBgClass(product.tag)]">
                 {{ product.tag }}
             </div>
-            <img :src="product.image" alt="product.name" class="flex items-center w-[200px] h-[150px] ml-12 mt-8">
-            <div class="p-4">
-                <h3 class="text-xs">{{ product.brand }}</h3>
-                <p class="text-base font-semibold mt-1">{{ product.description }}</p>
-                <div class="flex items-center text-center mt-1">
-                    <template v-for="star in 5" :key="star">
-                        <img :src="star <= product.rating ? 'src/assets/icon/yellow-star.svg' : 'src/assets/icon/white-star.svg'"
-                            class="h-4 w-4" />
-                    </template>
-                    <span class="ml-2 text-base text-gray-600">({{ product.rating.toFixed(1) }})</span>
+
+            <RouterLink :to="{ name: 'ProductDetail', params: { id: product.id } }">
+                <img :src="product.image" alt="product.name" class="flex items-center w-[200px] h-[150px] ml-12 mt-8">
+                <div class="p-4">
+                    <h3 class="text-xs">{{ product.brand }}</h3>
+                    <p class="text-base font-semibold mt-1">{{ product.description }}</p>
+                    <div class="flex items-center text-center mt-1">
+                        <template v-for="star in 5" :key="star">
+                            <img :src="star <= product.rating ? 'src/assets/icon/yellow-star.svg' : 'src/assets/icon/white-star.svg'"
+                                class="h-4 w-4" />
+                        </template>
+                        <span class="ml-2 text-base text-gray-600">({{ product.rating.toFixed(1) }})</span>
+                    </div>
                 </div>
-                <div class="flex justify-between items-center mt-2">
-                    <div>
-                        <span class="text-lg font-bold text-green-600">${{ product.price }}</span>
-                        <span v-if="product.oldPrice" class="text-sm text-gray-500 line-through">${{ product.oldPrice
-                            }}</span>
-                    </div>
+            </RouterLink>
 
-                    <div class="flex items-center gap-2">
-                        <input type="number" v-model.number="product.quantity" min="1" value="1"
-                            class="w-[67px] h-[29px] border text-[#3BB77E] text-lg border-[#3BB77E] rounded-[4px] text-center items-center focus:outline-none focus:shadow-outline">
-                        <button @click="addToCart(product)"
-                            class="flex justify-center items-center w-[67px] h-[29px] bg-[#DEF9EC] text-[#3BB77E] font-bold text-sm rounded focus:outline-none focus:shadow-outline cursor-pointer gap-2">
-                            Add
-                            <img src="../assets/icon/fi-rs-plus-small 1.svg" alt="icon">
-                        </button>
-                    </div>
+            <div class="flex justify-between items-center mt-2">
+                <div>
+                    <span class="text-lg font-bold text-green-600">${{ product.price }}</span>
+                    <span v-if="product.oldPrice" class="text-sm text-gray-500 line-through">${{ product.oldPrice
+                        }}</span>
+                </div>
 
+                <div class="flex items-center gap-2">
+                    <input type="number" v-model.number="product.quantity" min="1" value="1"
+                        class="w-[67px] h-[29px] border text-[#3BB77E] text-lg border-[#3BB77E] rounded-[4px] text-center items-center focus:outline-none focus:shadow-outline">
+                    <button @click="addToCart(product)"
+                        aria-label="Add {{ product.quantity }} {{ product.brand }} to cart"
+                        class="flex justify-center items-center w-[67px] h-[29px] bg-[#DEF9EC] text-[#3BB77E] font-bold text-sm rounded focus:outline-none focus:shadow-outline cursor-pointer gap-2">
+                        Add
+                        <img src="../assets/icon/fi-rs-plus-small 1.svg" alt="Add icon">
+                    </button>
                 </div>
             </div>
         </div>
 
         <!-- Snackbar -->
         <Snackbar :show="snackbar.show" :message="snackbar.message" :type="snackbar.type" />
-
     </div>
 </template>
 
 <script>
+import { RouterLink } from 'vue-router'
 import Snackbar from '@/components/Snackbar.vue'
 export default {
     name: 'product',
     components:{
-        Snackbar
+        Snackbar,
+        RouterLink,
     },
     data() {
         return {

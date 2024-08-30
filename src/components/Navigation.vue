@@ -14,16 +14,20 @@
             </ul>
         </div>
         <!-- Menu -->
-        <RouterLink to="" class="flex gap-6">
-        <MenuItem menuName="Hot Deals" icon="bxs-hot" icon_color="#3BB77E" font_weight="700" />
-        <MenuItem menuName="Home" dropList="none" font_weight="700" />
+        <div class="flex gap-6 cursor-pointer">
+        <RouterLink to="">
+            <MenuItem menuName="Hot Deals" icon="bxs-hot" icon_color="#3BB77E" font_weight="700" />
+        </RouterLink>
+        <RouterLink to="/">
+            <MenuItem menuName="Home" dropList="none" font_weight="700" />
+        </RouterLink>
         <MenuItem menuName="Food" dropList="yes" font_weight="700" />
         <MenuItem menuName="Vegetables" dropList="yes" font_weight="700" />
         <MenuItem menuName="Drink" dropList="none" font_weight="700" />
         <MenuItem menuName="Cookies" dropList="none" font_weight="700" />
         <MenuItem menuName="Meat & Seafood" dropList="yes" font_weight="700" />
         <MenuItem menuName="Bakery" dropList="none" font_weight="700" />
-      </RouterLink>
+      </div>
 
         <!-- Contact -->
         <div class="flex items-end space-x-2">
